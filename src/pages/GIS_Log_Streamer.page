@@ -28,10 +28,9 @@
 									<label class="slds-form-element__label">Log Level</label>
 									<div class="slds-form-element__control">
 										<div class="slds-select_container">
-											<select id="select_option" class="slds-select" ng-change="onSearch()" ng-model="search1"> 
+											<select id="select_option" class="slds-select" ng-change="onSearch()" ng-model="search1">
 												<option value="USER_DEBUG" ng-selected="true">USER_DEBUG</option>
 												<option value="FULL_LOG">FULL_LOG</option>
-												<option value="ERROR_LOG">ERROR_LOG</option>
 											</select>
 										</div>
 									</div>
