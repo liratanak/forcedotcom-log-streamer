@@ -3,7 +3,7 @@
 		<head>
 			<meta charset="utf-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
-			<title>GIS Log Streamer</title>
+			<title>Force.com Log Streamer - GIS</title>
 
 			<apex:stylesheet value="{!URLFOR($Resource.gis_log_streamer, 'assets/styles/salesforce-lightning-design-system.css')}"/>
 			<apex:stylesheet value="{!URLFOR($Resource.gis_log_streamer, 'clusterize.css')}"/>
