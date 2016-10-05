@@ -1,0 +1,64 @@
+<apex:page standardStylesheets="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" setup="false">
+	<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+			<title>GIS Log Streamer</title>
+
+			<apex:stylesheet value="{!URLFOR($Resource.gis_log_streamer, 'assets/styles/salesforce-lightning-design-system.css')}"/>
+			<apex:stylesheet value="{!URLFOR($Resource.gis_log_streamer, 'clusterize.css')}"/>
+			<apex:stylesheet value="{!URLFOR($Resource.gis_log_streamer, 'ng-notify.css')}"/>
+			<apex:stylesheet value="{!URLFOR($Resource.gis_log_streamer, 'logApp.css')}"/>
+		</head>
+		<body ng-app="logApp" ng-controller="MainController">
+			<div class="slds-container--fluid clusterize">
+				<div class="slds-grid">
+					<div class="slds-col slds-size--12-of-12 slds-resizable" >
+						<div class="slds-page-header slds-resizable" role="banner" >
+							<div class="slds-form--inline slds-resizable" >
+								<apex:image id="theImage" value="{!URLFOR($Resource.gis_log_streamer, 'assets/images/SFDC_logo.png')}" width="50px" height="50px"/>
+								 <input type="reset" id="clearLog" class="slds-button slds-button--neutral slds-float--right slds-m-left--x-small" value="Clear logs" ng-click="clear_log()" />
+								<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right slds-float--right" >
+									<svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">                
+										<use xlink:href="{!URLFOR($Resource.gis_log_streamer, 'assets/icons/utility-sprite/svg/symbols.svg#search')}" />
+									</svg>
+									<input class="slds-input slds-col--padded-medium" type="text" placeholder="Search logs" id="search" ng-model="search" ng-keyup="onSearch()"/>
+								</div>
+								<div class="slds-form-element slds-float--right">
+									<label class="slds-form-element__label">Log Level</label>
+									<div class="slds-form-element__control">
+										<div class="slds-select_container">
+											<select id="select_option" class="slds-select" ng-change="onSearch()" ng-model="search1"> 
+												<option value="USER_DEBUG" ng-selected="true">USER_DEBUG</option>
+												<option value="FULL_LOG">FULL_LOG</option>
+												<option value="ERROR_LOG">ERROR_LOG</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							   
+							</div>
+						</div>
+						<div class="slds-grid slds-theme--default clusterize-scroll" id="scrollArea" style="position:absolute;height:90%; width:100%;">
+							<div class="slds-p-left--large clusterize-content" id="contentArea"></div>  
+						</div>
+					   
+					</div>
+				</div>
+			</div>
+
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'cometd.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'jquery-1.5.1.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'json2.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'jquery.cometd.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'jsforce.min.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'angular.min.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'clusterize.min.js')}"></script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'ng-notify.js')}"></script>
+			<script type="text/javascript">
+				var GIS_SID = '{!$Api.Session_Id}';
+			</script>
+			<script type="text/javascript" src="{!URLFOR($Resource.gis_log_streamer, 'logApp.js')}"></script>
+		</body>
+	</html>
+</apex:page>
